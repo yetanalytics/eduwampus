@@ -33,7 +33,7 @@
    :dev
    {:dependencies [[ring-mock "0.1.5"] [ring/ring-devel "1.2.0"]]}}
   :url
-  "http://example.com/FIXME"
+  "https://github.com/AnEstuary/eduwampus"
   :plugins
   [[lein-ring "0.8.7"] [lein-cljsbuild "0.3.3"] [lein-git-deps "0.0.1-SNAPSHOT"]]
   :git-dependencies
@@ -41,5 +41,5 @@
   :source-paths
   [".lein-git-deps/edufaker-clj/src"]
   :description
-  "FIXME: write description"
+  "Eduwampus: the EdTech Startup Generator"
   :min-lein-version "2.0.0")
