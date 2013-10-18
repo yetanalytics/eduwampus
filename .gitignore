@@ -3,7 +3,10 @@
 /classes
 /checkouts
 pom.xml
+.DS_Store
+*.un~
 *.jar
 *.class
+*.log
 /.lein-*
 /.env
