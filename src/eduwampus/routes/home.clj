@@ -4,9 +4,11 @@
             [eduwampus.util :as util]
             [edufaker.company :as fake]))
 
+(declare generate-startup)
+
 (defn home-page []
   (layout/render
-    "home.html" {:content (util/md->html "/md/docs.md")}))
+    "home.html"  (generate-startup)))
 
 (defn about-page []
   (layout/render "about.html"))
@@ -17,5 +19,3 @@
 (defroutes home-routes
   (GET "/" [] (home-page))
   (GET "/about" [] (about-page)))
-
-(generate-startup)
