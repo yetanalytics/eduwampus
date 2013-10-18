@@ -39,7 +39,7 @@
   :git-dependencies
   [["https://github.com/AnEstuary/edufaker-clj.git"]]
   :source-paths
-  [".lein-git-deps/edufaker-clj/src"]
+  [".lein-git-deps/edufaker-clj/src" "src/"]
   :description
   "Eduwampus: the EdTech Startup Generator"
   :min-lein-version "2.0.0")
