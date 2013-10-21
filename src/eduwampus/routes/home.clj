@@ -13,7 +13,7 @@
     "home.html"  (generate-startup)))
 
 (defn get-startup []
-  (response/edn
+  (response/json
    (generate-startup)))
 
 (defn about-page []

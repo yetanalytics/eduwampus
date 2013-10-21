@@ -2,22 +2,24 @@
   (:require [ajax.core :refer [GET POST]]
             [domina :refer [value by-id destroy-children! append!]]
             [domina.events :refer [listen!]]
+            [domina.css :as jq]
             [dommy.template :as template]))
 
-(defn render-message [{:keys [message user]}]
-  [:li [:p {:id user} message " - " user]])
+;;(defn handler [response]
+;;  (.log js/console (str response)))
 
-(defn render-messages [messages]
-  (let [messages-div (by-id "messages")]
-    (destroy-children! messages-div)
-    (->> messages
-         (map render-message)
-         (into [:ul])
-         template/node
-         (append! messages-div))))
+;;(defn error-handler [{:keys [status status-text]}]
+;;  (.log js/console
+;;        (str "something bad " status " " status-text)))
+
+;;(GET "/hello")
+
+;;(GET "/hello" {:handler handler
+;;               :error-handler error-handler})
 
 (defn render-company [{:keys [cname catchphrase styles]}]
-  [:div [:h1 cname] [:h3 catchphrase]])
+  [:div [:h1 cname] [:h3 catchphrase]]
+  (append! "head" (str "<style type='text/css'>" styles "</style>")))
 
 (defn generate-startup [company]
   (let [company-div (by-id "company")]
@@ -38,5 +40,5 @@
   (GET "/startup" {:handler render-company}))
 
 (defn ^:export init []
-  (GET "/startup" {:handler render-company})
-  (listen! (by-id "generate") :click add-message))
+  ;(GET "/startup" {:handler render-company})
+  (listen! (by-id "generate") :click get-startup))

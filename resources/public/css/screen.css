@@ -8,3 +8,8 @@ body {
 .error {
     color: red;
 }
+
+.jumbotron {
+  text-align: center;
+  background:rgba(216,216,216,0.8);
+}
