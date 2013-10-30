@@ -8,7 +8,8 @@ $(document).ready(function() {
 
   $('#generate').on('click', function(e) {
     e.preventDefault;
-    $.getJSON('/startup', function(data) {
+    var seed = $('#seed').val();
+    $.getJSON('/startup/' + seed, function(data) {
       $('#company').html("<h1>" +
                          data.cname +
                          "</h1>" +

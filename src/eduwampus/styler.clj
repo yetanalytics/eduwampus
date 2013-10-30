@@ -1,9 +1,10 @@
 (ns eduwampus.styler
-  (:require [garden.core :refer [css]]))
+  (:require [garden.core :refer [css]]
+            [clojure.data.generators :as gen]))
 
 
 (defn rand-img []
-  (str (+ 1 (rand-int 17)) ".jpg"))
+  (str (+ 1 (gen/rand-nth (range 17))) ".jpg"))
 
 (defn rand-body []
   (css [:.corp-identity
