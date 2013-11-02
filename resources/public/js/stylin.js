@@ -6,9 +6,8 @@ $(document).ready(function() {
             backgroundSize: 'cover'}
   }
 
-  $('#generate').on('click', function(e) {
-    e.preventDefault;
-    var seed = $('#seed').val();
+
+  var renderStartup = function(seed) {
     $.getJSON('/startup/' + seed, function(data) {
       $('#company').html("<h1>" +
                          data.cname +
@@ -17,8 +16,19 @@ $(document).ready(function() {
                          data.catchphrase +
                          "</h3>"
                          )
+      $('body').css(data.styles);
     });
-    $('body').css(randomStyle());
-    return false;
+  }
+
+  if (window.location.hash != "") {
+    renderStartup(window.location.hash.substring(1));
+  }
+
+  $('#generate').on('click', function(e) {
+    e.preventDefault;
+    var newSeed = Math.floor(Math.random()*30000);
+    renderStartup(newSeed);
+    window.location.hash = newSeed;
+    return false
   });
 });
