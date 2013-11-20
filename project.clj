@@ -16,7 +16,8 @@
    [prismatic/dommy "0.1.1"]
    [cljs-ajax "0.2.0"]
    [garden "1.1.3"]
-   [org.clojure/data.generators "0.1.2"]]
+   [org.clojure/data.generators "0.1.2"]
+   [edufaker "0.3.0"]]
   :cljsbuild
   {:builds
    [{:source-paths ["src-cljs"],
@@ -38,8 +39,8 @@
   "https://github.com/AnEstuary/eduwampus"
   :plugins
   [[lein-ring "0.8.7"] [lein-cljsbuild "0.3.3"] [lein-git-deps "0.0.1-SNAPSHOT"]]
-  :git-dependencies [["https://github.com/AnEstuary/edufaker-clj.git" "with_seed"]]
-  :source-paths ["src" ".lein-git-deps/edufaker-clj/src/"]
+  ;;:git-dependencies [["https://github.com/AnEstuary/edufaker-clj.git" "with_seed"]]
+  :source-paths ["src"] ;; ".lein-git-deps/edufaker-clj/src/"
   :description
   "Eduwampus: the EdTech Startup Generator"
   :min-lein-version "2.0.0")
