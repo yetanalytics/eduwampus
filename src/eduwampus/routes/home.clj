@@ -38,3 +38,4 @@
   (GET "/" [] (home-page))
   (GET "/about" [] (about-page))
   (GET "/startup/:seed" [seed] (get-startup (read-string seed))))
+
