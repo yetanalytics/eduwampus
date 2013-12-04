@@ -9,6 +9,7 @@ $(document).ready(function() {
 
   var renderStartup = function(seed) {
     $.getJSON('/startup/' + seed, function(data) {
+      $('title').text(data.cname + ' - eduwampus');
       $('#company').html("<h1>" +
                          data.cname +
                          "</h1>" +
