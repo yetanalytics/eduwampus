@@ -17,7 +17,8 @@
    [cljs-ajax "0.2.0"]
    [garden "1.1.3"]
    [org.clojure/data.generators "0.1.2"]
-   [edufaker "0.3.0"]]
+   [edufaker "0.3.0"]
+   [anjel "0.0.1"]]
   :cljsbuild
   {:builds
    [{:source-paths ["src-cljs"],

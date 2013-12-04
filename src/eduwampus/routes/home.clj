@@ -5,6 +5,7 @@
             [noir.response :as response]
             [edufaker.company :as fake]
             [edufaker.seed :as seedy]
+            [anjel.core :as anjel]
             [eduwampus.styler :refer [rand-body]]))
 
 (declare generate-startup)
@@ -19,6 +20,11 @@
 (defn get-startup [seed]
   (response/json
    (generate-startup-seedy seed)))
+
+(defn angel-search [startup]
+  (if-let [result (anjel/find-startup startup)]
+    (response/json result)
+    (response/status 422 nil)))
 
 (defn about-page []
   (layout/render "about.html"))
@@ -37,4 +43,6 @@
 (defroutes home-routes
   (GET "/" [] (home-page))
   (GET "/about" [] (about-page))
+  (GET "/angel-search" [startup] (angel-search startup))
   (GET "/startup/:seed" [seed] (get-startup (read-string seed))))
+
