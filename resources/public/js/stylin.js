@@ -6,9 +6,11 @@ $(document).ready(function() {
             backgroundSize: 'cover'}
   }
 
+  var startupName;
 
   var renderStartup = function(seed) {
     $.getJSON('/startup/' + seed, function(data) {
+      startupName = data.cname
       $('title').text(data.cname + ' - eduwampus');
       $('#company').html("<h1>" +
                          data.cname +
@@ -18,6 +20,11 @@ $(document).ready(function() {
                          "</h3>"
                          )
       $('body').css(data.styles);
+      $('#twitter-area').html('<a href="https://twitter.com/share" class="twitter-share-button" id="tweet" data-lang="en" data-url="" data-text="" data-hashtags="edtech">Tweet</a>');
+      $('a#tweet').attr('data-url', ("http://eduwampus.herokuapp.com/" + window.location.hash ))
+               .attr('data-text', document.title + ", the EdTech Startup Generator");
+      //!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+      $.ajax({ url: 'http://platform.twitter.com/widgets.js', dataType: 'script', cache:true});
       angelSearch(data.cname);
     });
   }
@@ -48,6 +55,11 @@ $(document).ready(function() {
     renderStartup(window.location.hash.substring(1));
   }
 
+  $(window).on('hashchange', function() {
+    renderStartup(window.location.hash.substring(1));
+
+  });
+
   $('#generate').on('click', function(e) {
     e.preventDefault;
     $('#angel').html('')
@@ -56,4 +68,6 @@ $(document).ready(function() {
     window.location.hash = newSeed;
     return false
   });
+
+
 });
